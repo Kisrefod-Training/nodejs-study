@@ -1,11 +1,17 @@
-import assert from 'assert'
+import assert from 'assert';
+import defaultConfig, { host, port, config } from '../src/config.js';// eslint-disable-line import/extensions
 
-import {host} from './../src/config.js'
-assert.deepStrictEqual(host, 'localhost')
-import {port} from './../src/config.js'
-assert.deepStrictEqual(port, '1337')
-import {config} from './../src/config.js'
-assert.deepStrictEqual(config, {host: 'localhost', port: '1337'})
-import defaultConfig from './../src/config.js'
-assert.deepStrictEqual(defaultConfig, {host: 'localhost', port: '1337'})
-
+describe('Import config', () => {
+    it('host should be correct', () => {
+        assert.deepStrictEqual(host, 'localhost');
+    });
+    it('port should be correct', () => {
+        assert.deepStrictEqual(port, '1337');
+    });
+    it('all config should be correct', () => {
+        assert.deepStrictEqual(config, { host: 'localhost', port: '1337' });
+    });
+    it('default config should be correct', () => {
+        assert.deepStrictEqual(defaultConfig, { host: 'localhost', port: '1337' });
+    });
+});
