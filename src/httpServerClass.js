@@ -31,8 +31,7 @@ export default class HttpServer {
     }
 
     async startServer (host, port) {
-        const promise = new Promise((res, rej) => {
-            // TODO: Спросить, как в текущем контексте прописывать reject
+        const promise = new Promise((res) => {
             this.server.on('listening', () => {
                 res();
             });
