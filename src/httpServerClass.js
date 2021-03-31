@@ -1,5 +1,6 @@
 import express from 'express';
 import http from 'http';
+import { once, EventEmitter } from 'events';
 
 export default class HttpServer {
     constructor () {
@@ -31,23 +32,12 @@ export default class HttpServer {
     }
 
     async startServer (host, port) {
-        const promise = new Promise((res) => {
-            this.server.on('listening', () => {
-                res();
-            });
-            this.server.listen(port, host);
-        });
-
-        await promise;
+        this.server.listen(port, host);
+        await once(this.server, 'listening');
     }
 
     async stopServer () {
-        const promise = new Promise(res => {
-            this.server.close();
-            this.sockets.forEach(socket => socket.destroy());
-            res();
-        });
-
-        await promise;
+        this.server.close();
+        await once(this.server, 'close');
     }
 }
