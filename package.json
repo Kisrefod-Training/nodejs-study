@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node index.js",
+    "start": "tsc && node index.js",
     "lint": "eslint test",
     "test": "mocha test/**/*-test.js",
     "debug": "node debug index.js",
@@ -22,6 +22,8 @@
   },
   "homepage": "https://github.com/AndreyBelym/nodejs-katas#readme",
   "devDependencies": {
+    "@types/express": "^4.17.11",
+    "@types/node": "^14.14.37",
     "babel-eslint": "^10.1.0",
     "chai": "^4.3.4",
     "eslint": "^6.8.0",
