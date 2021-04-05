@@ -12,7 +12,7 @@ export default class HttpServer {
         app.get('/', (req, res) => {
             res
                 .status(200)
-                .sendFile('./html/main.html', { root: './' });
+                .sendFile('./serverResponse/html/main.html', { root: './' });
         });
         this.server.on('connection', socket => {
             this.sockets.push(socket);

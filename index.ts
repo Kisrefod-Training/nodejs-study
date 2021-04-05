@@ -6,8 +6,7 @@ const server = new HttpServer();
 
 export default server;
 
-
-// @ts-ignore
-if (esMain(import.meta)) server.startServer(host, port).then();
+/* // @ts-ignore
+if (esMain(import.meta)) server.startServer(host, port).then(); */
 
 

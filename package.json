@@ -33,10 +33,13 @@
     "sinon": "^8.1.1"
   },
   "dependencies": {
+    "@octokit/rest": "^18.5.2",
     "debug": "^3.2.6",
     "dotenv": "^8.2.0",
     "es-main": "^1.0.2",
     "eslint-config-airbnb": "^18.2.1",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "github-api": "^3.4.0",
+    "octonode": "^0.10.2"
   }
 }
