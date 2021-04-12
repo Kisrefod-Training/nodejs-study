@@ -92,7 +92,7 @@
     "new-cap": [2, { "capIsNew": false }],
     "space-before-function-paren": [2, "always"],
     "handle-callback-err": 0,
-    "linebreak-style": [2, "windows"],
+    "linebreak-style": [2, "unix"],
     "no-duplicate-imports": 2,
     "no-extra-parens": 2,
     "no-use-before-define": [2, "nofunc"],
