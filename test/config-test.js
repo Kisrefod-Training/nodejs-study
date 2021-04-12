@@ -15,3 +15,4 @@ describe('Import config', () => {
         assert.deepStrictEqual(defaultConfig, { host: 'localhost', port: '1337' });
     });
 });
+
