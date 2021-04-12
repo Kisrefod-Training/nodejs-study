@@ -1,5 +1,5 @@
 import assert from 'assert';
-import defaultConfig, { host, port, config } from '../src/config.js';// eslint-disable-line import/extensions
+import defaultConfig, { host, port, config } from '../src/config.js';
 
 describe('Import config', () => {
     it('host should be correct', () => {
