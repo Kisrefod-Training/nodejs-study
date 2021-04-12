@@ -24,7 +24,8 @@
     "src/customDeclaration/es-main.d.ts",
     "index.ts",
     "src/config.ts",
-    "src/httpServerClass.ts"
+    "src/httpServerClass.ts",
+    "src/gitParser.ts"
   ]
 }
 

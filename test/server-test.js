@@ -1,7 +1,7 @@
 import got from 'got';
 import assert from 'assert';
-import server from '../index.js';// eslint-disable-line import/extensions
-import { host, port } from '../src/config.js';// eslint-disable-line import/extensions
+import server from '../index.js';
+import { host, port } from '../src/config.js';
 
 describe('Server work correctly', () => {
     beforeEach(done => {
@@ -24,5 +24,5 @@ describe('Server work correctly', () => {
         await getServeResponse().then(serverAnswer => {
             assert.deepStrictEqual(serverAnswer, 200);
         });
-    });
+    }).timeout(10000);
 });

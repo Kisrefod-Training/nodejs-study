@@ -1,10 +1,9 @@
-/// <reference types="node" />
-import * as http from 'http';
 export default class HttpServer {
     private sockets;
-    private server;
+    private readonly server;
+    private readonly app;
     constructor();
-    createServer(): http.Server;
+    createServer(): void;
     startServer(host: string, port: number): Promise<void>;
     stopServer(): Promise<void>;
 }

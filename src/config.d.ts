@@ -10,5 +10,5 @@ export declare const config: {
 export declare const host: string;
 export declare const port: number;
 export declare const owner: string;
-export declare const repo: string;
+export declare const repository: string;
 export declare const token: string;

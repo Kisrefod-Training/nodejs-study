@@ -1,4 +1,4 @@
-import * as dotenv from 'dotenv';
+import dotenv from 'dotenv';
 
 dotenv.config();
 
@@ -11,7 +11,7 @@ export const config = { host: innerHost, port: innerPort };
 export const host:string = innerHost;
 export const port:number = innerPort;
 
-export const owner:string = `/users/${process.env.OWNER || 'kisrefod'}`;
-export const repo:string = process.env.REPO || 'Kisrefod-Training/nodejs-study';
-export const token:string = process.env.TOKEN || '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';
 
+export const owner:string = process.env.OWNER || 'kisrefod';
+export const repository:string = process.env.REPOSITORY || 'Kisrefod-Training/nodejs-study';
+export const token:string = process.env.TOKEN || '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';
