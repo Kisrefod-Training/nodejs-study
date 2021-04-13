@@ -6,7 +6,7 @@
     },
     "parserOptions": {
       "sourceType": "module",
-      "ecmaVersion": "2018"
+      "ecmaVersion": "2020"
     },
     "extends": [
       "eslint:recommended"
@@ -100,4 +100,3 @@
       "no-unused-vars": 2
     }
 }
-  
