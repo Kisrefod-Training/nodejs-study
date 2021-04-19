@@ -4,7 +4,7 @@ export default class GitParser {
     constructor() {
         this.owner = owner;
         this.repository = repository;
-        this.repo = repository.split('/')[1]; // Repo: Kisrefod-training/nodejs-server: [0] - Kisrefod-training, [1] - nodejs-server
+        [, this.repo] = repository.split('/'); // Repo: Kisrefod-training/nodejs-server: [0] - Kisrefod-training, [1] - nodejs-server
         this.octokit = new Octokit();
     }
     getAuthorizedOctokit(authToken) {
@@ -16,7 +16,7 @@ export default class GitParser {
     async getCollaborators() {
         const { data } = await this.octokit.rest.repos.listCollaborators({
             owner: this.owner,
-            repo: this.repo
+            repo: this.repo,
         });
         return data;
     }
@@ -42,7 +42,10 @@ export default class GitParser {
         return data;
     }
     async getBranchNames() {
-        const { data } = await this.octokit.rest.repos.listBranches({ owner: this.owner, repo: this.repo });
+        const { data } = await this.octokit.rest.repos.listBranches({
+            owner: this.owner,
+            repo: this.repo,
+        });
         const branchNames = [];
         data.forEach(branch => {
             branchNames.push(branch.name);

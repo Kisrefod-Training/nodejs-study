@@ -4,11 +4,24 @@
       "node": true,
       "mocha": true
     },
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["@typescript-eslint"],
     "parserOptions": {
       "sourceType": "module",
-      "ecmaVersion": "2020"
+      "ecmaVersion": "2020",
+      "project": "tsconfig.json",
+      "tsconfigRootDir": "."
     },
-    "extends": ["airbnb-base"],
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/eslint-recommended",
+      "plugin:@typescript-eslint/recommended",
+      "airbnb-base"
+      ],
+    "settings": {
+      "import/resolver": { "node": {"extensions": [".js", ".ts", ".jsx", ".tsx", ".json"]}, "typescript": {}},
+      "import/extensions": [".js", ".ts", ".jsx", ".tsx", ".json"]
+    },
     "rules": {
       "arrow-parens": [2, "as-needed"],
       "arrow-spacing": [2, { "before": true, "after": true }],
@@ -46,7 +59,6 @@
       "no-unused-expressions": 2,
       "no-var": 2,
       "no-with": 2,
-      "camelcase": 2,
       "comma-spacing": 2,
       "consistent-return": 2,
       "eqeqeq": 2,
@@ -58,6 +70,9 @@
       "brace-style": [2, "stroustrup", { "allowSingleLine": false }],
       "eol-last": 2,
       "import/extensions": "off",
+      "import/named": "off",
+      "camelcase": "off",
+      "@typescript-eslint/no-explicit-any": "off",
       "indent": [2, 4, { "SwitchCase": 1 }],
       "key-spacing": [2, { "align": "value" }],
       "max-nested-callbacks": [2, 6],

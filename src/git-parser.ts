@@ -1,38 +1,45 @@
 import { Octokit } from '@octokit/rest';
 import { owner, repository, token } from './config.js';
-import type {ParsedData, Collaborator, Commit} from './gitParserTypes'
+import type { ParsedData, Collaborator, Commit } from './git-parser-types';
 
 export default class GitParser {
     private readonly owner: string;
+
     private readonly repository: string;// Kisrefod-training/nodejs-server - all repository name
+
     private readonly repo: string;// nodejs-server - project repository
+
     private octokit: Octokit;
 
     constructor () {
         this.owner = owner;
         this.repository = repository;
-        this.repo = repository.split('/')[1];// Repo: Kisrefod-training/nodejs-server: [0] - Kisrefod-training, [1] - nodejs-server
+        [, this.repo] = repository.split('/');// Repo: Kisrefod-training/nodejs-server: [0] - Kisrefod-training, [1] - nodejs-server
         this.octokit = new Octokit();
     }
+
     getAuthorizedOctokit (authToken: string):Octokit {
         return new Octokit({
             type: 'oauth',
             auth: authToken,
         });
     }
+
     private async getCollaborators () {
         const { data } = await this.octokit.rest.repos.listCollaborators({
             owner: this.owner,
-            repo: this.repo
+            repo:  this.repo,
         });
 
         return data;
     }
+
     private async getAllPullReqs () {
         const { data } = await this.octokit.search.issuesAndPullRequests({ q: `repo:${repository} is:pr` });
 
         return data.items;
     }
+
     private async getPullReqData (collaborators:Array<Collaborator>) {
         const data:Array<ParsedData> = [];
         const allPullReqs = await this.getAllPullReqs();
@@ -53,8 +60,12 @@ export default class GitParser {
         });
         return data;
     }
+
     private async getBranchNames () {
-        const {data} = await this.octokit.rest.repos.listBranches({ owner: this.owner, repo: this.repo });
+        const { data } = await this.octokit.rest.repos.listBranches({
+            owner: this.owner,
+            repo:  this.repo,
+        });
         const branchNames: Array<string> = [];
 
         data.forEach(branch => {
@@ -63,11 +74,13 @@ export default class GitParser {
 
         return branchNames;
     }
+
     private async getBranchCommits (branchName: string) {
         const { data } = await this.octokit.rest.repos.listCommits({ owner: this.owner, repo: this.repo, sha: branchName });
 
         return data;
     }
+
     private async getAllCommits () {
         const branchNames = await this.getBranchNames();
 
@@ -81,6 +94,7 @@ export default class GitParser {
 
         return allCommits;
     }
+
     private async getCommitData () {
         const allCommits = await this.getAllCommits();
         const data:Array<ParsedData> = [];
@@ -93,10 +107,11 @@ export default class GitParser {
                 ID:   commit.sha,
             };
 
-            if(data.find(elem => elem.ID === item.ID) === undefined) data.push(item);
+            if (data.find(elem => elem.ID === item.ID) === undefined) data.push(item);
         }));
         return data;
     }
+
     async getParsedData () {
         this.octokit = this.getAuthorizedOctokit(token);
         const collaborators = await this.getCollaborators();

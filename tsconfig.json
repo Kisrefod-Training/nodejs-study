@@ -24,12 +24,12 @@
     "src/customDeclaration/es-main.d.ts",
     "index.ts",
     "src/config.ts",
-    "src/httpServerClass.ts",
-    "src/gitParser.ts",
+    "src/http-server-class.ts",
+    "src/git-parser.ts",
     "test/config-test.ts",
     "test/server-test.ts",
     "test/git-test.ts",
-    "src/gitParserTypes.ts",
+    "src/git-parser-types.ts",
     "test/git-test-data.ts"
   ]
 }
