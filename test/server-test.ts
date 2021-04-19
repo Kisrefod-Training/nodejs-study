@@ -8,16 +8,19 @@ describe('Server works correctly', () => {
         server.startServer(host, port);
         done();
     });
+
     afterEach(done => {
         server.stopServer();
         done();
     });
+
     it('server response status code = 200', async () => {
         async function getServeResponse () {
             const response = await got(`http://${host}:${port}/`);
 
             return response.statusCode;
         }
+
         await getServeResponse().then(serverAnswer => {
             assert.deepStrictEqual(serverAnswer, 200);
         });

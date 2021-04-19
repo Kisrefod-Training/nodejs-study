@@ -3,6 +3,8 @@ import * as http from 'http';
 import { once } from 'events';
 import {Socket} from "net";
 import GitParser from './gitParser.js';
+import debug from 'debug';
+import {ParsedData} from "./gitParserTypes";
 
 export default class HttpServer {
     private sockets: Array<Socket>;
@@ -31,7 +33,20 @@ export default class HttpServer {
 
     async startServer (host: string, port:number) {
         const gitParser = new GitParser();
-        const parsedData = await gitParser.getParsedData();
+        let parsedData:Array<ParsedData>;
+        try {
+            parsedData = await gitParser.getParsedData();
+        } catch (e) {
+            const serverDebug = debug('httpServer');
+            serverDebug('Can\'t get data from github - check owner, repository, or oauth-token');
+            parsedData = [{
+                user: 'sample',
+                type: 'commit',
+                URL: 'sample',
+                ID: 'sample'
+            }];
+        }
+
         this.app.get('/', (req, res) => {
             res.status(200).render('response.pug', {parsedData});
         });
