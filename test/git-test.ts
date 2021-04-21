@@ -1,7 +1,7 @@
 import assert from 'assert';
 import mockito, { anyString } from 'ts-mockito';
 import GitParser from '../src/git-parser.js';
-import { TestOctokit, correctParsedData } from './git-test-data.js';
+import { TestOctokit, correctParsedData } from './test-data/git-test-data.js';
 import { ParsedData } from '../src/git-parser-types';
 
 describe('Github-data parsed correctly', () => {
@@ -11,7 +11,7 @@ describe('Github-data parsed correctly', () => {
         const gitParser = new GitParser();
         const spiedParser = mockito.spy(gitParser);
 
-        // getAuthorizedOctokit get github-authToken (string)
+        // getAuthorizedOctokit gets github-authToken (string)
         // and return interface for comfort web-requests.
         // For this tests was created substitute-interface TestOctokit with predefined returns.
         mockito.when(spiedParser.getAuthorizedOctokit(anyString())).thenReturn(TestOctokit);

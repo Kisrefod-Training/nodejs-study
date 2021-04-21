@@ -1,4 +1,4 @@
-import { Collaborator, ParsedData } from '../src/git-parser-types';
+import { Collaborator, ParsedData } from '../../src/git-parser-types';
 
 type BranchName = 'branchWithAuthor' | 'branchWithoutAuthor';
 type Param = {

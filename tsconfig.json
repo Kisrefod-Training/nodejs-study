@@ -21,7 +21,7 @@
     "forceConsistentCasingInFileNames": true        /* Disallow inconsistently-cased references to the same file. */
   },
   "files":[
-    "src/customDeclaration/es-main.d.ts",
+    "src/custom-declaration/es-main.d.ts",
     "index.ts",
     "src/config.ts",
     "src/http-server-class.ts",
@@ -30,8 +30,11 @@
     "test/server-test.ts",
     "test/git-test.ts",
     "src/git-parser-types.ts",
-    "test/git-test-data.ts"
-  ]
+    "test/test-data/git-test-data.ts",
+    "test/test-data/view-test-data.ts",
+    "test/view-test.ts"
+  ],
+
 }
 
 

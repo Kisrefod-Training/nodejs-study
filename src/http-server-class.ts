@@ -8,20 +8,16 @@ import { ParsedData } from './git-parser-types';
 
 export default class HttpServer {
     private sockets: Array<Socket>;
-
-    private readonly server: http.Server;
-
-    private readonly app: express.Express;
+    private server: http.Server;
+    private app: express.Express;
 
     constructor () {
         this.sockets = [];
         this.app = express();
         this.server = new http.Server(this.app);
-        this.createServer();
-    }
 
-    createServer () {
         this.app.set('view engine', 'pug');
+        this.app.use(express.static('views'));
 
         this.server.on('connection', socket => {
             this.sockets.push(socket);
@@ -33,8 +29,25 @@ export default class HttpServer {
             });
         });
     }
+    testConstructor() {
+        this.sockets = [];
+        this.app = express();
+        this.server = new http.Server(this.app);
 
-    async startServer (host: string, port:number) {
+        this.app.set('view engine', 'pug');
+        this.app.use(express.static('views'));
+
+        this.server.on('connection', socket => {
+            this.sockets.push(socket);
+
+            socket.on('close', () => {
+                const socketIndex = this.sockets.indexOf(socket);
+
+                this.sockets.splice(socketIndex, 1);
+            });
+        });
+    }
+    async getData() {
         const gitParser = new GitParser();
         let parsedData:Array<ParsedData>;
 
@@ -52,15 +65,18 @@ export default class HttpServer {
                 ID:   'sample',
             }];
         }
+        return parsedData;
+    }
+    async startServer (host: string, port:number) {
+        const data = await this.getData();
 
         this.app.get('/', (req, res) => {
-            res.status(200).render('response.pug', { parsedData });
+            res.status(200).render('response.pug', { data });
         });
 
         this.server.listen(port, host);
         await once(this.server, 'listening');
     }
-
     async stopServer () {
         this.server.close();
         await once(this.server, 'close');
