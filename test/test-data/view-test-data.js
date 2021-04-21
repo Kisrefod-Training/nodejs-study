@@ -1,33 +1,39 @@
-const parsedDataPromise = Promise.resolve([
+export const parsedData = [
     {
         user: 'a',
         type: 'PR',
         URL: 'b',
-        ID: ''
+        ID: '',
     },
     {
         user: 'A',
         type: 'PR',
         URL: '',
-        ID: 'b'
+        ID: 'b',
     },
     {
         user: 'Aaa',
         type: 'commit',
         URL: '',
-        ID: ''
+        ID: '',
+    },
+    {
+        user: 'AaaA',
+        type: 'commit',
+        URL: '',
+        ID: '',
     },
     {
         user: 'b',
         type: 'commit',
         URL: '',
-        ID: ''
+        ID: '',
     },
     {
-        user: 'null',
+        user: 'two words',
         type: 'commit',
         URL: 'null',
-        ID: 'null'
+        ID: 'null',
     },
-]);
-export default parsedDataPromise;
+];
+export const parsedDataPromise = Promise.resolve(parsedData);

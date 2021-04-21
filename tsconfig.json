@@ -32,10 +32,11 @@
     "src/git-parser-types.ts",
     "test/test-data/git-test-data.ts",
     "test/test-data/view-test-data.ts",
-    "test/view-test.ts"
+    "test/view-test.ts",
+    "test/testcafe/filter-interaction.ts"
   ],
-
 }
+
 
 
     // "jsx": "preserve",                           /* Specify JSX code generation: 'preserve', 'react-native', 'react', 'react-jsx' or 'react-jsxdev'. */

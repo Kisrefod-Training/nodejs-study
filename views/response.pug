@@ -23,7 +23,7 @@ table.table#filterTable
         each obj in commitsAndPR
             tr
                 th(scope='row') #{count++}
-                td= obj.user
-                td= obj.type
-                td= obj.URL
-                td= obj.ID
+                td.user=    obj.user
+                td.type=    obj.type
+                td.URL=     obj.URL
+                td.ID=      obj.ID

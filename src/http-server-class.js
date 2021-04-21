@@ -52,7 +52,7 @@ export default class HttpServer {
     }
     async startServer(host, port) {
         const data = await this.getData();
-        this.app.get('/', (req, res) => {
+        this.app.use((req, res, next) => {
             res.status(200).render('response.pug', { data });
         });
         this.server.listen(port, host);

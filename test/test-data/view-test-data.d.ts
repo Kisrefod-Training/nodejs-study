@@ -1,3 +1,3 @@
 import { ParsedData } from '../../src/git-parser-types';
-declare const parsedDataPromise: Promise<Array<ParsedData>>;
-export default parsedDataPromise;
+export declare const parsedData: Array<ParsedData>;
+export declare const parsedDataPromise: Promise<Array<ParsedData>>;

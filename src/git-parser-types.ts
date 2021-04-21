@@ -2,7 +2,7 @@ export type ParsedData = {
     user: string,
     type: 'commit' | 'PR',
     URL: string,
-    ID: string | number
+    ID: string
 }
 export type Collaborator = {
     login: string;

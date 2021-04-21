@@ -1,34 +1,41 @@
 import { ParsedData } from '../../src/git-parser-types';
-const parsedDataPromise: Promise<Array<ParsedData>> = Promise.resolve([
+
+export const parsedData: Array<ParsedData> = [
     {
         user: 'a',
         type: 'PR',
-        URL: 'b',
-        ID: ''
+        URL:  'b',
+        ID:   '',
     },
     {
         user: 'A',
         type: 'PR',
-        URL: '',
-        ID: 'b'
+        URL:  '',
+        ID:   'b',
     },
     {
         user: 'Aaa',
         type: 'commit',
-        URL: '',
-        ID: ''
+        URL:  '',
+        ID:   '',
+    },
+    {
+        user: 'AaaA',
+        type: 'commit',
+        URL:  '',
+        ID:   '',
     },
     {
         user: 'b',
         type: 'commit',
-        URL: '',
-        ID: ''
+        URL:  '',
+        ID:   '',
     },
     {
-        user: 'null',
+        user: 'two words',
         type: 'commit',
-        URL: 'null',
-        ID: 'null'
+        URL:  'null',
+        ID:   'null',
     },
-]);
-export default parsedDataPromise;
+];
+export const parsedDataPromise: Promise<Array<ParsedData>> = Promise.resolve(parsedData);

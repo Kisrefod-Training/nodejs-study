@@ -34,7 +34,7 @@ export default class GitParser {
                     user: collaborator.login,
                     type: 'PR',
                     URL: pullReq.html_url,
-                    ID: pullReq.id,
+                    ID: '' + pullReq.id,
                 };
                 data.push(item);
             });
