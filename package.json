@@ -21,7 +21,6 @@
   },
   "homepage": "https://github.com/AndreyBelym/nodejs-katas#readme",
   "devDependencies": {
-    "babel-eslint": "^10.1.0",
     "chai": "^4.3.4",
     "eslint": "^6.8.0",
     "got": "^11.8.2",
