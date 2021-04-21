@@ -6,5 +6,5 @@ const server = new HttpServer();
 
 export default server;
 
-if (esMain(import.meta)) server.startServer(host, port);
-
+if (esMain(import.meta)) 
+    server.startServer(host, port);
