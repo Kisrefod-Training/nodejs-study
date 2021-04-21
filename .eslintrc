@@ -72,7 +72,7 @@
       "import/extensions": "off",
       "import/named": "off", // Off for git-parser-types - eslint always print error, if extention doesn't set
       "camelcase": "off", // Off for git-test-data.ts - test Octokit must has field "html_url"
-      "@typescript-eslint/no-explicit-any": "off", // Off for git-test-data.ts - test Octokit must has suitable type
+      "@typescript-eslint/no-explicit-any": 1, // Off for git-test-data.ts - test Octokit must has suitable type
       "indent": [2, 4, { "SwitchCase": 1 }],
       "key-spacing": [2, { "align": "value" }],
       "max-nested-callbacks": [2, 6],
