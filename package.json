@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "description": "Basic Node.js exercises",
   "main": "index.js",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "start": "tsc && node index.js",
     "lint": "eslint test --fix --ext .ts",
-    "test": "npm run lint && mocha test/**/*-test.js",
+    "test": "npm run lint && mocha test/unit-test/**/*-test.js",
+    "testcafe": "testcafe --config-file test/func-test/testcafe/testcafe.json",
     "debug": "node debug index.js",
     "watch": "npm test -- -w"
   },

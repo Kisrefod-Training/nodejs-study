@@ -1,8 +1,8 @@
 import assert from 'assert';
 import mockito, { anyString } from 'ts-mockito';
-import GitParser from '../src/git-parser.js';
-import { TestOctokit, correctParsedData } from './test-data/git-test-data.js';
-import { ParsedData } from '../src/git-parser-types';
+import GitParser from '../../src/git-parser.js';
+import { TestOctokit, correctParsedData } from '../test-data/git-test-data.js';
+import { ParsedData } from '../../src/git-parser-types';
 
 describe('Github-data parsed correctly', () => {
     let checkingParsedData: Array<ParsedData>;

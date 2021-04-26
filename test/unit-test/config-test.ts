@@ -1,5 +1,5 @@
 import assert from 'assert';
-import defaultConfig, { host, port, config } from '../src/config.js';
+import defaultConfig, { host, port, config } from '../../src/config.js';
 
 describe('Import config parsed correctly', () => {
     it('host should be correct', () => {

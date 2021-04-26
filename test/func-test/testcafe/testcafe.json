@@ -1,0 +1,11 @@
+{
+  "browsers": "chrome",
+  "src": [
+    "test/func-test/testcafe/**/**.ts"
+  ],
+  "compilerOptions": {
+    "typescript": {
+      "configPath": "tsconfig.json"
+    }
+  }
+}
