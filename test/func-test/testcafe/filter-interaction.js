@@ -44,16 +44,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 exports.__esModule = true;
 var testcafe_1 = require("testcafe");
-var view_test_data_1 = require("../../test-data/view-test-data");
 var ts_mockito_1 = __importDefault(require("ts-mockito"));
+var view_test_data_1 = require("../../test-data/view-test-data");
 var config_1 = require("../../../src/config");
 var http_server_class_1 = __importDefault(require("../../../src/http-server-class"));
+var server = new http_server_class_1["default"]();
 fixture(templateObject_1 || (templateObject_1 = __makeTemplateObject(["Filter works correctly"], ["Filter works correctly"]))).page(templateObject_2 || (templateObject_2 = __makeTemplateObject(["127.0.0.1:1337"], ["127.0.0.1:1337"]))).before(function () { return __awaiter(void 0, void 0, void 0, function () {
-    var server, spiedServer;
+    var spiedServer;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                server = new http_server_class_1["default"]();
                 spiedServer = ts_mockito_1["default"].spy(server);
                 ts_mockito_1["default"].when(spiedServer.getData()).thenReturn(view_test_data_1.parsedDataPromise);
                 server.testConstructor();
