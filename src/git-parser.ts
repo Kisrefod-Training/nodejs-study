@@ -4,11 +4,8 @@ import type { ParsedData, Collaborator, Commit } from './git-parser-types';
 
 export default class GitParser {
     private readonly owner: string;
-
     private readonly repository: string;// Kisrefod-training/nodejs-server - all repository name
-
     private readonly repo: string;// nodejs-server - project repository
-
     private octokit: Octokit;
 
     constructor () {
