@@ -29,24 +29,6 @@ export default class HttpServer {
             });
         });
     }
-    testConstructor() {
-        this.sockets = [];
-        this.app = express();
-        this.server = new http.Server(this.app);
-
-        this.app.set('view engine', 'pug');
-        this.app.use(express.static('views'));
-
-        this.server.on('connection', socket => {
-            this.sockets.push(socket);
-
-            socket.on('close', () => {
-                const socketIndex = this.sockets.indexOf(socket);
-
-                this.sockets.splice(socketIndex, 1);
-            });
-        });
-    }
     async getData() {
         const gitParser = new GitParser();
         let parsedData:Array<ParsedData>;

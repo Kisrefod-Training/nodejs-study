@@ -1,19 +1,15 @@
 import { Selector } from 'testcafe';
-import mockito from 'ts-mockito';
 import { parsedData, parsedDataPromise } from '../../test-data/view-test-data';
 import { host, port } from '../../../src/config';
+import sinon from 'sinon';
 import HttpServer from '../../../src/http-server-class';
 
 const server = new HttpServer();
+
 fixture`Filter works correctly`
     .page`127.0.0.1:1337`
     .before(async () => {
-
-        const spiedServer = mockito.spy(server);
-
-        mockito.when(spiedServer.getData()).thenReturn(parsedDataPromise);
-
-        server.testConstructor();
+        sinon.stub(HttpServer.prototype, 'getData').returns(parsedDataPromise);
         await server.startServer(host, port);
     });
 
