@@ -8,8 +8,8 @@ import { ParsedData } from './git-parser-types';
 
 export default class HttpServer {
     private sockets: Array<Socket>;
-    private server: http.Server;
-    private app: express.Express;
+    private readonly server: http.Server;
+    private readonly app: express.Express;
 
     constructor () {
         this.sockets = [];
