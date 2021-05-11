@@ -1,4 +1,6 @@
 {
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
   "env": {
     "es6": true,
     "node": true,
@@ -6,11 +8,17 @@
   },
   "parserOptions": {
     "sourceType": "module",
-    "ecmaVersion": "2020"
+    "ecmaVersion": 2020
   },
   "extends": [
-    "eslint:recommended"
-  ],
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "airbnb-base"
+    ],
+  "settings": {
+    "import/resolver": { "node": {"extensions": [".js", ".ts", ".jsx", ".tsx", ".json"]}, "typescript": {}},
+    "import/extensions": [".js", ".ts", ".jsx", ".tsx", ".json"]
+  },
   "rules": {
     "arrow-parens": [2, "as-needed"],
     "arrow-spacing": [2, { "before": true, "after": true }],
@@ -48,7 +56,6 @@
     "no-unused-expressions": 2,
     "no-var": 2,
     "no-with": 2,
-    "camelcase": 2,
     "comma-spacing": 2,
     "consistent-return": 2,
     "eqeqeq": 2,
@@ -59,6 +66,10 @@
     "yoda": [2, "never"],
     "brace-style": [2, "stroustrup", { "allowSingleLine": false }],
     "eol-last": 2,
+    "import/extensions": "off",
+    "import/named": "off", // Off for git-parser-types - eslint always print error, if extention doesn't set
+    "camelcase": "off", // Off for git-test-data.ts - test Octokit must has field "html_url"
+    "@typescript-eslint/no-explicit-any": 1, // Off for git-test-data.ts - test Octokit must has suitable type
     "indent": [2, 4, { "SwitchCase": 1 }],
     "key-spacing": [2, { "align": "value" }],
     "max-nested-callbacks": [2, 6],
@@ -92,7 +103,7 @@
     "new-cap": [2, { "capIsNew": false }],
     "space-before-function-paren": [2, "always"],
     "handle-callback-err": 0,
-    "linebreak-style": [2, "unix"],
+    "linebreak-style": [2, "windows"],
     "no-duplicate-imports": 2,
     "no-extra-parens": 2,
     "no-use-before-define": [2, "nofunc"],
